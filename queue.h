@@ -9,19 +9,10 @@ struct priority_q{
     Tree *head;
 };
 
-/*
- * Criae retorna uma lista de prioridades vazia.
- */
 priority_queue* creat_priority_queue();
 
-/*
- * Recebe a letra, a frequencia e renfileira em prioridade minima.
- */
 void enqueue(Tree *node, priority_queue *pq);
 
-/*
- * Recebe uma fila e retorna o prmeiro no, o menos frequente.
- */
 Tree* dequeue(priority_queue *pq);
 
-#endif // QUEUE_H
+#endif

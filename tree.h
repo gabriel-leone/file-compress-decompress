@@ -18,16 +18,8 @@ struct _tree{
     Tree *right;
 };
 
-
-/*
- * Recebe um Char e a sua frequencia e retorna um no com esse char.
- */
 Tree* creat_node(BYTE character, int frequencia);
 
-/*
- * Recebe a árvore, o seu tamanho e o arquivo onde será escrita a árvore.
- * Não há nenhum retorna, na função a árvore será escrita no cabeçalho.
- */
 void write_Tree(Tree *root, int *size, FILE *header);
 
-#endif // TREE_H
+#endif
