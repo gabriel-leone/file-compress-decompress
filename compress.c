@@ -1,5 +1,9 @@
 #include "compress.h"
 
+#define MAX_TABLE_SIZE 150
+#define MAX_FREQUENCY_SIZE 256
+#define MAX_FILENAME_SIZE 200
+
 void frequency_count(FILE *arquivo, int *array)
 {
 
@@ -57,7 +61,7 @@ void write_compress(BYTE tabela[][150], FILE *arquivo, FILE *saida, int tree_siz
     return;
 }
 
-void creat_table(BYTE tabela[][150], Tree *bt, BYTE *string, int position)
+void creat_table(BYTE tabela[][MAX_TABLE_SIZE], Tree *bt, BYTE *string, int position)
 {
 
     if (bt->left == NULL && bt->right == NULL)
@@ -81,8 +85,9 @@ void creat_table(BYTE tabela[][150], Tree *bt, BYTE *string, int position)
 void compress(char *nome_entrada)
 {
 
-    char nome_saida[200], aux[150];
-    int frequency[256] = {0};
+    char nome_saida[MAX_FILENAME_SIZE], aux[MAX_TABLE_SIZE];
+    int frequency[MAX_FREQUENCY_SIZE];
+    memset(frequency, 0, sizeof(frequency));
 
     FILE *arquivo;
     FILE *novo_arquivo;

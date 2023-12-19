@@ -10,11 +10,12 @@ int main(int argc, char *argv[])
 
   char *nome_do_arquivo = argv[1];
 
-  while (1)
-  {
-    compress(nome_do_arquivo);
-    system("pause");
-    break;
-  }
-  system("cls");
+  compress(nome_do_arquivo);
+
+  printf("Pressione qualquer tecla para continuar . . .\n");
+  getchar();
+
+  system("@cls||clear");
+
+  return 0;
 }
