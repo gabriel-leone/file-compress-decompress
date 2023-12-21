@@ -44,13 +44,21 @@ void write_compress(BYTE tabela[][MAX_TABLE_SIZE], FILE *arquivo, FILE *saida, i
                 size = 0;
                 character = 0;
             }
-            // Se o bit na posição atual é 1, adiciona o bit ao caractere
-            if (tabela[aux][position] & 1)
+
+            // Adiciona o bit correspondente ao caractere atual no byte de saída
+            if (tabela[aux][position] == '1')
+            {
                 character = add_bit(character, size);
-            // Incrementa o tamanho e a posição
+            }
+
             ++size;
             ++position;
         }
+    }
+
+    if (size > 0)
+    {
+        fprintf(saida, "%c", character);
     }
 
     // Calcula o número de bits de lixo no último byte
@@ -58,7 +66,7 @@ void write_compress(BYTE tabela[][MAX_TABLE_SIZE], FILE *arquivo, FILE *saida, i
     fprintf(saida, "%c", character);
 
     // Posiciona o ponteiro do arquivo no início
-    fseek(saida, 0, SEEK_SET);
+    rewind(saida);
     // Combina os bits de lixo com os 3 bits mais significativos do tamanho da árvore
     lixo = lixo | tree_size >> 8;
     // Escreve o primeiro byte no arquivo de saída
