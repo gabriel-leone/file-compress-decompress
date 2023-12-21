@@ -132,7 +132,14 @@ void decompress(char *nome_entrada)
     // Se o tamanho da árvore não é 2, chama a função normal para reconstruir a árvore de Huffman
     else
         bt = rebuild_huffman_tree(arquivo_entrada);
+
     arquivo_saida = fopen(nome_saida, "wb");
+
+    if (arquivo_saida == NULL)
+    {
+        printf("Erro ao abrir o arquivo de saída!\n");
+        return;
+    }
 
     // Chama a função para escrever o arquivo descomprimido
     write_decompress(bt, arquivo_entrada, arquivo_saida, lixo);
