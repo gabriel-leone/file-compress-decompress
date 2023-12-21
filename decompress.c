@@ -110,6 +110,7 @@ void decompress(char *nome_entrada)
     // Copia o nome do arquivo de entrada para o nome do arquivo de saída, excluindo a extensão ".comp"
     strncpy(nome_saida, nome_entrada, strlen(nome_entrada) - 5);
     nome_saida[strlen(nome_entrada) - 5] = '\0';
+    
 
     // Lê o primeiro caractere do arquivo de entrada
     fscanf(arquivo_entrada, "%c", &character);
